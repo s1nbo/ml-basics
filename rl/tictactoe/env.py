@@ -53,3 +53,4 @@ class TicTacToeEnv(gym.Env):
             print('|'.join(row))
             if i < 2:
                 print('-----')
+        print()

@@ -1,12 +1,9 @@
 from env import TicTacToeEnv
-from agent import RlAgent
+from agent import RlAgent, RandomAgent
 
 env = TicTacToeEnv()
-agent1 = RlAgent("Agent 1", epsilon=0.0)
-agent2 = RlAgent("Agent 2", epsilon=0.0)
-
-agent1.load("rl_agent_model.pkl")
-agent2.load("rl_agent_model.pkl")
+agent1 = RandomAgent("RandomAgent1")
+agent2 = RandomAgent("RlAgent2")
 
 obs, _ = env.reset()
 done = False
