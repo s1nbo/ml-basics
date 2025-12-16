@@ -8,7 +8,7 @@ import os
 #
 model_path = "car_racing_model.zip"
 checkpoint_dir = "./checkpoints/"
-TOTAL_TIMESTEPS = 50_000_000
+TOTAL_TIMESTEPS = 15_000_000
 N_ENVS = 8
 SAVE_FREQ = 1_000_000
 
