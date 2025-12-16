@@ -16,8 +16,6 @@ else:
     model.save(model_path)
     print("Training complete!")
 
-
-
 # Evaluation
 env = gym.make("CartPole-v1", render_mode="human")
 
@@ -32,6 +30,5 @@ for i in range(3):
         obs, reward, terminated, truncated, info = env.step(action, )
         total_reward += reward
         done = terminated or truncated
-
 
     print("Total Reward:", total_reward)
