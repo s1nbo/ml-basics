@@ -1,29 +1,18 @@
-from env import TicTacToeEnv
-from agent import RlAgent, RandomAgent
+from pettingzoo.classic import tictactoe_v3
 
-env = TicTacToeEnv()
-agent1 = RandomAgent("RandomAgent1")
-agent2 = RandomAgent("RlAgent2")
+env = tictactoe_v3.env(render_mode="human")
+env.reset()
 
-obs, _ = env.reset()
-done = False
-
-env.render()
-
-while not done:
-    if env.current_player == 1:
-        action = agent1.get_action(obs)
+for agent in env.agent_iter():
+    print(f"Agent: {agent}")
+    observation, reward, termination, truncation, info = env.last()
+    if termination or truncation:
+        action = None
     else:
-        action = agent2.get_action(obs * -1)
+        mask = observation['action_mask']
+        action = env.action_space(agent).sample(mask=mask)
+    
+    env.step(action)
 
-    obs, reward, terminated, truncated, _ = env.step(action)
-    env.render()
+env.close()
 
-    if terminated or truncated:
-        if reward == 1:
-            print("Player 1 wins")
-        elif reward == -1:
-            print("Player 2 wins")
-        else:
-            print("Draw")
-        break
